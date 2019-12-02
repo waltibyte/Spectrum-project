@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '',  pathMatch: 'full', redirectTo: 'home' },
-  { path: 'home', loadChildren: () => import('./portal/homepage/homepage.module').then(m => m.HomepageModule) },
-  {path: '**', redirectTo: 'home' }
+  { path: '',  pathMatch: 'full', redirectTo: 'portal' },
+  { path: 'portal', loadChildren: () => import('./portal/portal.module').then(m => m.HomepageModule) },
+  {path: '**', redirectTo: 'portal' }
 ];
 
 @NgModule({

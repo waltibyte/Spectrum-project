@@ -6,7 +6,7 @@ import { LoaderService } from './shared/services/loader.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'spectrumProject';
@@ -23,6 +23,6 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.loading = false;
-    }, 5000);
+    }, 5);
   }
 }

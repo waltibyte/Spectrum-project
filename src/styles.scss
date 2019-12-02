@@ -1,0 +1,399 @@
+/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  min-height: 100%;
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif !important;
+}
+
+.category-list-card {
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  color: #FD6556 !important;
+  cursor: pointer;
+}
+
+.category-list-card:hover {
+  .card-block {
+    background-color: #FD6556;
+    color: #ffffff !important;
+    -webkit-transition: all 0.3s ease-in-out !important;
+    transition: all 0.3s ease-in-out !important;
+    font-size: 1.1rem !important;
+  }
+  p {
+    color: white !important;
+    font-size: 1.1rem;
+    font-weight: 100;
+    -webkit-transition: all 0.3s ease-in-out !important;
+    transition: all 0.3s ease-in-out !important;
+    margin-top: 23%;
+  }
+
+  h4 {
+    color: white !important;
+    font-size: 1.1rem;
+    font-weight: 100;
+    -webkit-transition: all 0.3s ease-in-out !important;
+    transition: all 0.3s ease-in-out !important;
+  }
+
+  i {
+    display: none;
+  }
+}
+
+.f-10 {
+  font-size: 10px !important;
+}
+
+.f-11 {
+  font-size: 11px !important;
+}
+
+.f-12 {
+  font-size: 12px !important;
+}
+
+.f-13 {
+  font-size: 13px !important;
+}
+
+.f-14 {
+  font-size: 14px !important;
+}
+
+.f-15 {
+  font-size: 15px !important;
+}
+
+.f-16 {
+  font-size: 16px;
+}
+
+.f-18 {
+  font-size: 18px;
+}
+
+.f-20 {
+  font-size: 20px;
+}
+
+.f-22 {
+  font-size: 22px;
+}
+
+.f-24 {
+  font-size: 24px;
+}
+
+.f-26 {
+  font-size: 26px;
+}
+
+.f-28 {
+  font-size: 28px;
+}
+
+.f-30 {
+  font-size: 30px;
+}
+
+.f-32 {
+  font-size: 32px;
+}
+
+.f-34 {
+  font-size: 34px;
+}
+
+.f-36 {
+  font-size: 36px;
+}
+
+.f-38 {
+  font-size: 38px;
+}
+
+.f-40 {
+  font-size: 40px;
+}
+
+.f-42 {
+  font-size: 42px;
+}
+
+.f-44 {
+  font-size: 44px;
+}
+
+.f-46 {
+  font-size: 46px;
+}
+
+.f-48 {
+  font-size: 48px;
+}
+
+.f-50 {
+  font-size: 50px;
+}
+
+.f-52 {
+  font-size: 52px;
+}
+
+.f-54 {
+  font-size: 54px;
+}
+
+.f-56 {
+  font-size: 56px;
+}
+
+.f-58 {
+  font-size: 58px;
+}
+
+.f-60 {
+  font-size: 60px;
+}
+
+.f-62 {
+  font-size: 62px;
+}
+
+.f-64 {
+  font-size: 64px;
+}
+
+.f-66 {
+  font-size: 66px;
+}
+
+.f-68 {
+  font-size: 68px;
+}
+
+.f-70 {
+  font-size: 70px;
+}
+
+.f-72 {
+  font-size: 72px;
+}
+
+.f-74 {
+  font-size: 74px;
+}
+
+.f-76 {
+  font-size: 76px;
+}
+
+.f-78 {
+  font-size: 78px;
+}
+
+.f-80 {
+  font-size: 80px;
+}
+
+.f-w-100 {
+  font-weight: 100;
+}
+
+.f-w-200 {
+  font-weight: 200;
+}
+
+.f-w-300 {
+  font-weight: 300;
+}
+
+.f-w-400 {
+  font-weight: 400;
+}
+
+.f-w-500 {
+  font-weight: 500;
+}
+
+.f-w-600 {
+  font-weight: 600;
+}
+
+.f-w-700 {
+  font-weight: 700;
+}
+
+.f-w-800 {
+  font-weight: 800;
+}
+
+.f-w-900 {
+  font-weight: 900;
+}
+
+.f-w-bold {
+  font-weight: bold;
+}
+
+.f-s-normal {
+  font-style: normal;
+}
+
+.f-s-italic {
+  font-style: italic;
+}
+
+.f-s-oblique {
+  font-style: oblique;
+}
+
+.f-s-initial {
+  font-style: initial;
+}
+
+.f-s-inherit {
+  font-style: inherit;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-overline {
+  text-decoration: overline;
+}
+
+.text-line-through {
+  text-decoration: line-through;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
+.baseline {
+  vertical-align: baseline;
+}
+
+.sub {
+  vertical-align: sub;
+}
+
+.super {
+  vertical-align: super;
+}
+
+.baseline {
+  vertical-align: baseline;
+}
+
+.top {
+  vertical-align: top;
+}
+
+.text-top {
+  vertical-align: text-top;
+}
+
+.middle {
+  vertical-align: middle;
+}
+
+.bottom {
+  vertical-align: bottom;
+}
+
+.text-bottom {
+  vertical-align: text-bottom;
+}
+
+.initial {
+  vertical-align: initial;
+}
+
+.inherit {
+  vertical-align: inherit;
+}
+
+.o-hidden {
+  overflow: hidden;
+}
+
+.o-visible {
+  overflow: visible;
+}
+
+.o-auto {
+  overflow: auto;
+}
+
+.oy-auto {
+  overflow-y: auto;
+}
+
+.ox-auto {
+  overflow-x: auto;
+}
+
+.oy-visible {
+  overflow-y: visible;
+}
+
+.ox-visible {
+  overflow-x: visible;
+}
+
+.img-20 {
+  width: 20px;
+}
+
+.img-30 {
+  width: 30px;
+}
+
+.img-40 {
+  width: 40px;
+}
+
+.img-50 {
+  width: 50px;
+}
+
+.img-60 {
+  width: 60px;
+}
+
+.img-70 {
+  width: 70px;
+}
+
+.img-80 {
+  width: 80px;
+}
+
+.img-90 {
+  width: 90px;
+}
+
+.img-100 {
+  width: 100px;
+}
+
+.c-pointer {
+  cursor: pointer !important;
+}

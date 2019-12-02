@@ -1,12 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-events',
-  templateUrl: './events.component.html',
-  styleUrls: ['./events.component.sass'],
+  selector: 'app-portal',
+  templateUrl: './portal.component.html',
+  styleUrls: ['./portal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EventsComponent implements OnInit {
+export class PortalComponent implements OnInit {
 
   constructor() { }
 
