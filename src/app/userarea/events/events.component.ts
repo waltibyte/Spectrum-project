@@ -84,4 +84,5 @@ export class EventsComponent implements OnInit, OnDestroy {
     localStorage.setItem('addedEvents', JSON.stringify(addData));
     console.log(localStorage.getItem('addedEvents'));
   }
+
 }

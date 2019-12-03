@@ -8,6 +8,7 @@ export class _Events {
     scheduledFor: Date;
     duration: any;
     capacity: any;
+    hideCap?: boolean;
 
     // tslint:disable-next-line: variable-name
     constructor(_id: any, organizer, company, about, scheduledFor: any, duration, capacity) {
