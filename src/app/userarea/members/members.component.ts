@@ -68,19 +68,18 @@ export class MembersComponent implements OnInit, AfterViewInit, OnDestroy {
     this.calendarModal.hide();
   }
 
-  // getRegisteredEvent(id) {
-  //   this.eventService.storeRequestRegisteredEvents()
-  //   .pipe(untilComponentDestroyed(this))
-  //   .subscribe(res => {
-  //     const regEvents = res.filter(regEv => {
-  //       return regEv.member_id === id;
-  //     });
-  //     const availableEventsIds = new Set(regEvents.map(ev => ev.event_id));
-  //     const filteredEvents = this.allEvents.filter(({_id}) => availableEventsIds.has(_id));
-  //     this.util.myEvent$.next(filteredEvents);
-  //     // console.log(filteredEvents);
-  //   });
-  // }
+  /**
+   * Get total number of events registered
+   */
+  getTotalRegEvent(id) {
+    const joinedEvents: any = JSON.parse(localStorage.getItem('addedEvents'));
+    const regEvents = joinedEvents.filter(regEv => {
+      return regEv.member_id === id;
+    });
+    const availableEventsIds = new Set(regEvents.map(ev => ev.event_id));
+    const filteredEvents = this.allEvents.filter(({ _id }) => availableEventsIds.has(_id));
+    return filteredEvents.length;
+  }
 
   getRegisteredEvent(id) {
     const joinedEvents: any = JSON.parse(localStorage.getItem('addedEvents'));
