@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { Member } from 'src/app/shared/model/members-interface';
 import { MembersService } from 'src/app/shared/services/members.service';
 import { OrderPipe } from 'ngx-order-pipe';
 import {untilComponentDestroyed} from '@w11k/ngx-componentdestroyed';
 import { EventsService } from 'src/app/shared/services/events.service';
 import { _Events } from 'src/app/shared/model/events-interface';
-import * as _ from 'lodash';
+import { UtilityService } from 'src/app/shared/services/utility.service';
 
 @Component({
   selector: 'app-members',
@@ -23,8 +23,8 @@ export class MembersComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private memberService: MembersService,
     private eventService: EventsService,
-    private orderPipe: OrderPipe,
-    private cd: ChangeDetectorRef
+    private util: UtilityService,
+    private orderPipe: OrderPipe
   ) { }
 
   ngOnInit() {
@@ -50,7 +50,6 @@ export class MembersComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.order === value) {
       this.reverse = !this.reverse;
     }
-
     this.order = value;
   }
 
@@ -74,13 +73,10 @@ export class MembersComponent implements OnInit, AfterViewInit, OnDestroy {
       const regEvents = res.filter(regEv => {
         return regEv.member_id === id;
       });
-      console.log(regEvents);
-
-      // tslint:disable-next-line: variable-name
-    //   if (regEvents.length > 0) {
-    //     const a = this.allEvents.filter(d => d._id);
-        
-    // }
+      const availableEventsIds = new Set(regEvents.map(ev => ev.event_id));
+      const filteredEvents = this.allEvents.filter(({_id}) => availableEventsIds.has(_id));
+      this.util.myEvent$.next(filteredEvents);
+      // console.log(filteredEvents);
     });
   }
 

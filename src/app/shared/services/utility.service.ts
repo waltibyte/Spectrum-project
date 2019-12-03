@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { throwError as _throw, throwError } from 'rxjs';
+import { throwError as _throw, throwError, Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilityService {
+  public myEvent$: Subject<any> = new BehaviorSubject<any>(null);
 
   constructor(
   ) { }
