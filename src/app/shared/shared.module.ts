@@ -2,17 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
+import { CalendarEventComponent } from './component/calendar-event/calendar-event.component';
+import { CalendarModule } from 'angular-calendar';
 
 
 @NgModule({
-  declarations: [PagenotfoundComponent],
+  declarations: [PagenotfoundComponent, CalendarEventComponent],
   imports: [
     CommonModule,
-    MDBBootstrapModule
+    MDBBootstrapModule,
+    CalendarModule
   ],
   exports: [
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    CalendarEventComponent
   ]
 })
 export class SharedModule { }

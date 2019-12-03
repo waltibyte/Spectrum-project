@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomepageRoutingModule } from './portal-routing.module';
-import { MembersComponent } from './members/members.component';
-import { EventsComponent } from './events/events.component';
 import { PortalComponent } from './portal.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 
 @NgModule({
-  declarations: [MembersComponent, EventsComponent, PortalComponent, HomepageComponent],
+  declarations: [PortalComponent, HomepageComponent],
   imports: [
     CommonModule,
-    HomepageRoutingModule
+    HomepageRoutingModule,
+    MDBBootstrapModule
   ],
-  exports: [MembersComponent, EventsComponent, PortalComponent, HomepageComponent]
+  exports: [PortalComponent, HomepageComponent]
 })
 export class HomepageModule { }

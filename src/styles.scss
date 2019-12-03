@@ -1,3 +1,4 @@
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
 /* You can add global styles to this file, and also import other style files */
 html,
 body {
@@ -45,6 +46,106 @@ body {
     display: none;
   }
 }
+
+
+.spec-nav-color {
+  background-color: #e84a2c !important;
+} 
+
+.spectrum-table { 
+  width: 100%;
+  border-collapse: separate !important; 
+  border-spacing: 0 5px !important;
+  background-color: transparent !important;
+} 
+
+
+.spectrum-table td:first-of-type .spectrum-table th:first-of-type {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding-left: 15px;
+}
+
+.spectrum-table td:last-of-type, .spectrum-table th:last-of-type {
+  padding-right: 15px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  }
+
+.spectrum-table th {
+  background-color: transparent; 
+  border-bottom-style: none !important;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #707070;
+  padding: 4px !important;
+}
+
+.spectrum-table tr:last-child {
+  padding: 0;
+  border-bottom-style: none;
+}
+
+.spectrum-table th.mat-cell, .spectrum-table td { 
+  padding: 5px; 
+  border: hidden;
+  background-color: rgba(238,229,233,0.20);
+}
+
+.spectrum-table td {
+  overflow: hidden;
+  color: rgba(112,112,112,0.80);
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  // height: 2.3em;
+}
+
+.spectrum-table tbody tr {
+  height: 25px;
+}
+
+.spectrum-table tbody tr:hover {
+  background-color: rgba(238,229,233,0.70);
+}
+
+// Style calendar
+.cal-month-view .cal-day-cell.cal-today {
+  background-color: #e8fde7;
+}
+
+.cal-month-view .cal-open-day-events {
+  color: #fff;
+  background-color: #73515f;
+  box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
+}
+
+////////////////////////////////////////////////
+////////////// CUSTOM SCROLL BAR //////////////
+//////////////////////////////////////////////
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  // -webkit-box-shadow: inset 0 0 6px rgba(166, 241, 188,0.1);
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background: #EEE5E9;
+  box-shadow: inset 0 0 6px #DD4F05;
+  -webkit-box-shadow: inset 0 0 6px #EEE5E9;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+background: #EEE5E9;
+}
+
 
 .f-10 {
   font-size: 10px !important;
@@ -343,7 +444,7 @@ body {
 }
 
 .oy-auto {
-  overflow-y: auto;
+  overflow-y: auto !important;
 }
 
 .ox-auto {

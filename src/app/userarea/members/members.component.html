@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card p-4 ox-auto" style="border-top: 6px solid #e84a2c;">
+            <h4>View all members</h4>
+            <table class="table spectrum-table">
+                <thead>
+                    <tr>
+                        <th [class.active]="order === 'name'" (click)="setOrder('name')">
+                            <div class="d-flex flex-row align-items-center">
+                                <span>Name</span>
+                                <i [hidden]="!reverse" class="material-icons">
+                                    arrow_drop_up
+                                </i>
+                                <i [hidden]="reverse" class="material-icons">
+                                    arrow_drop_down
+                                </i>
+                            </div>
+                        </th>
+                        <th [class.active]="order === 'age'" (click)="setOrder('age')">
+                            <div class="d-flex flex-row align-items-center">
+                                <span>Age</span>
+                                <i [hidden]="!reverse" class="material-icons">
+                                    arrow_drop_up
+                                </i>
+                                <i [hidden]="reverse" class="material-icons">
+                                    arrow_drop_down
+                                </i>
+                            </div>
+                        </th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Company</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let member of allMembers | orderBy: order:reverse:'case-insensitive'">
+                        <td>{{ member.name }}</td>
+                        <td>{{ member.age }}</td>
+                        <td>{{ member.phone }}</td>
+                        <td>{{ member.email }}</td>
+                        <td>{{ member.company }}</td>
+                        <td>
+                            <i class="material-icons text-success c-pointer mr-1" mdbTooltip="Register for an event" placement="top">
+                                post_add
+                            </i>
+                            <i class="material-icons text-info c-pointer mr-1" mdbTooltip="Track your events in calendar" placement="top" (click)="openCalModal(member._id)">
+                                calendar_view_day
+                            </i>
+                            <i class="material-icons text-danger c-pointer" mdbTooltip="Delete a user" placement="top" (click)="removeMember(member)">
+                                delete
+                            </i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div #calModal>
+    <app-calendar-event (closeCalModal)="closeCalendarModal($event)" mdbModal #calendarModal="mdbModal"
+        class="modal fade oy-auto" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    </app-calendar-event>
+</div>

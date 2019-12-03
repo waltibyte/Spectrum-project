@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { trigger, transition, style, animate, state } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -15,26 +16,24 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
         style({transform: 'translate(0)'}),
         animate('500ms ease-in-out', style({opacity: 0}))
       ])
-    ]),
-    trigger('slideUpDown', [
-      state('in', style({height: '*'})),
-      transition('* => void', [
-        style({height: '*'}),
-        animate('300ms', style({height: 0}))
-      ]),
-      transition('void => *', [
-        style({height: 0}),
-        animate('300ms', style({height: '*'}))
-      ]),
     ])
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  /**
+   * Route to user area
+   */
+  goto(event) {
+    this.router.navigate([`${event}`]);
   }
 
 }

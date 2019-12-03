@@ -1,0 +1,14 @@
+thead th {
+  cursor: pointer;
+
+  i {
+    visibility: hidden;
+  }
+  
+  &.active {
+
+    i {
+      visibility: visible;
+    }
+  }
+}

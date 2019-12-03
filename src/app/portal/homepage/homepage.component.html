@@ -1,7 +1,7 @@
 <div class="access-pan">
 <h2>Welcome to Spectrum Management</h2>
 <div class="d-flex flex-row justify-content-center w-100">
-<div class="px-1 col-md-4 col-6 col-sm-12 mb-1">
+<div [@fadeInOutTranslate] class="px-1 col-md-4 col-6 col-sm-12 mb-1" (click)="goto('./user-area/members')">
         <div class="card mb-2 text-center category-list-card z-depth-bottom-1 light text-success text-info"
             style="height: 150px;">
             <div class="card-block px-2" style="overflow: hidden;">
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="px-1 col-md-4 col-6 col-sm-12 mb-1">
+    <div [@fadeInOutTranslate] class="px-1 col-md-4 col-6 col-sm-12 mb-1" (click)="goto('./user-area/events')">
         <div class="card mb-2 text-center category-list-card z-depth-bottom-1 light text-success text-info"
             style="height: 150px;">
             <div class="card-block px-2" style="overflow: hidden;">
