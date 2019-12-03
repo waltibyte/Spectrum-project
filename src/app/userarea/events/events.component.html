@@ -1,32 +1,40 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card p-4 ox-auto" style="border-top: 6px solid #e84a2c;">
+            <h4>View all events</h4>
+            <table class="table spectrum-table">
+                <thead>
+                    <tr>
+                        <th>Organizer</th>
+                        <th>Company</th>
+                        <th>About</th>
+                        <th>Schedule for</th>
+                        <th>Duration</th>
+                        <th>Capacity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let event of allEvents">
+                        <td>{{ event.organizer }}</td>
+                        <td>{{ event.company }}</td>
+                        <td>{{ event.about }}</td>
+                        <td>{{ formatDate(event.scheduledFor) }}</td>
+                        <td>{{ timeConvert(event.duration) }}</td>
+                        <td>{{ event.capacity }}</td>
+                        <td>
+                            <button *ngIf="hasApply" type="button" (click)="joinEvent(event._id)" mdbTooltip="Add event" placement="top"
+                                class="btn btn-primary shadow-sm mx-1 btn-round d-flex flex-row justify-content-center align-items-center">
+                                <span class="text-left">Join</span>
+                                <i class="material-icons text-right">
+                                    touch_app
+                                </i>
+                            </button>
 
-    <div class="row">
-        <div class="col-12">
-            <div class="card p-4 ox-auto" style="border-top: 6px solid #e84a2c;">
-                <h4>View all events</h4>
-                <table class="table spectrum-table">
-                    <thead>
-                        <tr>
-                            <th>Organizer</th>
-                            <th>Company</th>
-                            <th>About</th>
-                            <th>Schedule for</th>
-                            <th>Duration</th>
-                            <th>Capacity</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let event of (events$ | async)">
-                            <td>{{ event.organizer }}</td>
-                            <td>{{ event.company }}</td>
-                            <td>{{ event.about }}</td>
-                            <td>{{ formatDate(event.scheduledFor) }}</td>
-                            <td>{{ timeConvert(event.duration) }}</td>
-                            <td>{{ event.capacity }}</td>
-                            <td>Kelvin</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>

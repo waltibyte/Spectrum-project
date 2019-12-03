@@ -7,6 +7,7 @@ import { throwError as _throw, throwError, Subject, BehaviorSubject } from 'rxjs
 })
 export class UtilityService {
   public myEvent$: Subject<any> = new BehaviorSubject<any>(null);
+  public apply$: Subject<any> = new BehaviorSubject<any>(null);
 
   constructor(
   ) { }

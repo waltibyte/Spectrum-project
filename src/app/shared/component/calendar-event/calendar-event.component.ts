@@ -5,7 +5,7 @@ import {
   Output,
   EventEmitter,
   ChangeDetectorRef
-} from "@angular/core";
+} from '@angular/core';
 import {
   startOfDay,
   endOfDay,
@@ -16,81 +16,46 @@ import {
   isSameMonth,
   addHours,
   parseISO
-} from "date-fns";
+} from 'date-fns';
 import {
   CalendarEvent,
   CalendarEventAction,
   CalendarEventTimesChangedEvent,
   CalendarView
-} from "angular-calendar";
-import { Subject } from "rxjs";
-import { UtilityService } from "../../services/utility.service";
-import { _Events } from "../../model/events-interface";
+} from 'angular-calendar';
+import { Subject } from 'rxjs';
+import { UtilityService } from '../../services/utility.service';
+import { _Events } from '../../model/events-interface';
 
 const colors: any = {
   red: {
-    primary: "#ad2121",
-    secondary: "#FAE3E3"
+    primary: '#ad2121',
+    secondary: '#FAE3E3'
   },
   blue: {
-    primary: "#1e90ff",
-    secondary: "#D1E8FF"
+    primary: '#1e90ff',
+    secondary: '#D1E8FF'
   },
   yellow: {
-    primary: "#e3bc08",
-    secondary: "#FDF1BA"
+    primary: '#e3bc08',
+    secondary: '#FDF1BA'
   }
 };
 
 @Component({
-  selector: "app-calendar-event",
-  templateUrl: "./calendar-event.component.html",
-  styleUrls: ["./calendar-event.component.scss"]
+  selector: 'app-calendar-event',
+  templateUrl: './calendar-event.component.html',
+  styleUrls: ['./calendar-event.component.scss']
 })
 export class CalendarEventComponent implements OnInit {
   @Output() closeCalModal = new EventEmitter<any>();
   myEvents: _Events[];
+  // tslint:disable-next-line: variable-name
   _myEvent = [];
 
-  view = "month";
+  view = 'month';
   viewDate: Date = new Date();
-  events: CalendarEvent[] = [
-    // {
-    //   start: subDays(startOfDay(new Date()), 1),
-    //   end: addDays(new Date(), 1),
-    //   title: 'A 3 day event',
-    //   color: colors.red,
-    //   allDay: true,
-    //   resizable: {
-    //     beforeStart: true,
-    //     afterEnd: true
-    //   },
-    //   draggable: true
-    // },
-    // {
-    //   start: startOfDay(new Date()),
-    //   title: 'An event with no end date',
-    //   color: colors.yellow,
-    // },
-    // {
-    //   start: subDays(endOfMonth(new Date()), 3),
-    //   end: addDays(endOfMonth(new Date()), 3),
-    //   title: 'A long event that spans 2 months',
-    //   color: colors.blue,
-    //   allDay: true
-    // },
-    // {
-    //   start: addHours(startOfDay(new Date()), 2),
-    //   end: addHours(new Date(), 2),
-    //   title: 'A draggable and resizable event',
-    //   color: colors.yellow,
-    //   resizable: {
-    //     beforeStart: true,
-    //     afterEnd: true
-    //   },
-    //   draggable: false
-    // }
-  ];
+  events: CalendarEvent[] = [];
   refresh: Subject<any> = new Subject();
   activeDayIsOpen = false;
 
@@ -145,7 +110,7 @@ export class CalendarEventComponent implements OnInit {
   }: CalendarEventTimesChangedEvent): void {
     event.start = newStart;
     event.end = newEnd;
-    this.handleEvent("Dropped or resized", event);
+    this.handleEvent('Dropped or resized', event);
     this.refresh.next();
   }
 
@@ -153,7 +118,7 @@ export class CalendarEventComponent implements OnInit {
 
   addEvent(): void {
     this.events.push({
-      title: "New event",
+      title: 'New event',
       start: startOfDay(new Date()),
       end: endOfDay(new Date()),
       color: colors.red,
