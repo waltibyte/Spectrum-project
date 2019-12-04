@@ -23,19 +23,27 @@
                         <td>{{ timeConvert(event.duration) }}</td>
                         <td>{{ event.hideCap ? 'hidden' : event.capacity }}</td>
                         <td>
-                            <button *ngIf="hasApply" type="button" (click)="joinEvent(event._id)" mdbTooltip="Add event"
-                                placement="top"
-                                class="btn btn-primary shadow-sm mx-1 btn-round d-flex flex-row justify-content-center align-items-center">
-                                <span class="text-left">Join</span>
-                                <i class="material-icons text-right">
-                                    touch_app
+                            <div class="d-flex flex-row justify-content-center align-items-center">
+                                <button *ngIf="hasApply" type="button" (click)="joinEvent(event.id)"
+                                    mdbTooltip="Add event" placement="top"
+                                    class="btn btn-primary shadow-sm mx-1 btn-round d-flex flex-row justify-content-center align-items-center">
+                                    <span class="text-left">Join</span>
+                                    <i class="material-icons text-right">
+                                        touch_app
+                                    </i>
+                                </button>
+                                <i (click)="event.hideCap ? event.hideCap = false : event.hideCap = true"
+                                    class="material-icons c-pointer" [class.text-info]="event.hideCap"
+                                    mdbTooltip="Show or hide capacity" placement="top">
+                                    remove_red_eye
                                 </i>
-                            </button>
-                            <i (click)="event.hideCap ? event.hideCap = false : event.hideCap = true" class="material-icons c-pointer" 
-                            [class.text-info]="event.hideCap"
-                                mdbTooltip="Show or hide capacity" placement="right">
-                                remove_red_eye
-                            </i>
+
+                                <!-- Default switch -->
+                                <div class="custom-control custom-switch ml-2" mdbTooltip="Show or hide event on calendar marker" placement="top">
+                                    <input type="checkbox" [formControl]="calStatForm" [checked]="event.showOnCalendar" (change)="setEventCalStatus(event.id)" class="custom-control-input" id="customSwitches{{event.id}}">
+                                    <label class="custom-control-label" for="customSwitches{{event.id}}"></label>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

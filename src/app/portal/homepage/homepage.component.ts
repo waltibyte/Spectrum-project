@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { Router } from '@angular/router';
-import { registeredEvents } from '../../../assets/data-store/addedEvents-mock';
+import { registeredEvents } from '../../../../api/addedEvents-mock';
 
 @Component({
   selector: 'app-homepage',
@@ -28,15 +28,9 @@ export class HomepageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.addedEvents();
   }
 
-  /**
-   * Set added event to local storage
-   */
-  addedEvents() {
-    localStorage.setItem('addedEvents', JSON.stringify(registeredEvents));
-  }
+
   /**
    * Route to user area
    */

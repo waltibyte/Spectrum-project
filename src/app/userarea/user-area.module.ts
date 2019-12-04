@@ -10,6 +10,7 @@ import { EventsComponent } from './events/events.component';
 import { OrderModule } from 'ngx-order-pipe';
 import { SharedModule } from '../shared/shared.module';
 import { CalendarModule } from 'angular-calendar';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [UserAreaComponent, TopMenuComponent, MembersComponent, EventsComponent ],
@@ -19,7 +20,8 @@ import { CalendarModule } from 'angular-calendar';
     OrderModule,
     CalendarModule,
     MDBBootstrapModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   exports: [UserAreaComponent, TopMenuComponent, MembersComponent, EventsComponent],
   providers: [ DatePipe ]

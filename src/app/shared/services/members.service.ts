@@ -36,11 +36,12 @@ export class MembersService {
    * Method that performs the http get request and maps the response for subscription
    */
   storeRequestMembers(): Observable<any> {
-    return this.http.get('./assets/data-store/store.json').pipe(
+    const PATH = '/api/members';
+    return this.http.get(PATH).pipe(
       catchError(this.util.handleError),
       map(
         (data: any) => {
-          return data.members;
+          return data;
         },
         (err: HttpErrorResponse) => {
           console.log(err.message);

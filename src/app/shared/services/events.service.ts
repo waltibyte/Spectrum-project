@@ -4,6 +4,7 @@ import { UtilityService } from './utility.service';
 import { environment } from 'src/environments/environment';
 import { switchMap, shareReplay, catchError, map } from 'rxjs/operators';
 import { HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { _Events } from '../model/events-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -36,11 +37,12 @@ export class EventsService {
    * Method that performs the http get request and maps the response for subscription
    */
   storeRequestEvents(): Observable<any> {
-    return this.http.get('./assets/data-store/store.json').pipe(
+    const PATH = '/api/events';
+    return this.http.get(PATH).pipe(
       catchError(this.util.handleError),
       map(
         (data: any) => {
-          return data.events;
+          return data;
         },
         (err: HttpErrorResponse) => {
           console.log(err.message);
@@ -52,11 +54,45 @@ export class EventsService {
    * Method that gets all the registered events
    */
   storeRequestRegisteredEvents(): Observable<any> {
-    return this.http.get('./assets/data-store/store.json').pipe(
+    const PATH = '/api/registeredEvents';
+    return this.http.get(PATH).pipe(
       catchError(this.util.handleError),
       map(
         (data: any) => {
-          return data.registeredEvents;
+          return data;
+        },
+        (err: HttpErrorResponse) => {
+          console.log(err.message);
+        })
+    );
+  }
+
+  /**
+   * Method that add chosen event
+   */
+  addEvents(reqBody): Observable<any> {
+    const PATH = '/api/registeredEvents';
+    return this.http.post(PATH, reqBody)
+    .pipe(
+      catchError(this.util.handleError),
+      map(
+        (data: any) => {
+          return data;
+        },
+        (err: HttpErrorResponse) => {
+          console.log(err.message);
+        })
+    );
+  }
+
+  updateEventCalStatus(id, status): Observable<any> {
+    const PATH = `/api/events/${id}`;
+    return this.http.patch(PATH, { showOnCalendar: status})
+    .pipe(
+      catchError(this.util.handleError),
+      map(
+        (data: any) => {
+          return data;
         },
         (err: HttpErrorResponse) => {
           console.log(err.message);

@@ -1,10 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { _Events } from 'src/app/shared/model/events-interface';
 import { Observable } from 'rxjs/internal/Observable';
 import { EventsService } from 'src/app/shared/services/events.service';
 import { DatePipe } from '@angular/common';
 import { UtilityService } from 'src/app/shared/services/utility.service';
 import { untilComponentDestroyed } from '@w11k/ngx-componentdestroyed';
+import { IdService } from 'src/app/shared/services/id.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-events',
@@ -15,20 +17,43 @@ export class EventsComponent implements OnInit, OnDestroy {
   allEvents: _Events[];
   memberId: string;
   hasApply = false;
+  calStatForm = new FormControl();
 
   constructor(
     private eventService: EventsService,
     private fDate: DatePipe,
-    private util: UtilityService
+    private util: UtilityService,
+    private idsService: IdService
   ) { }
+
+  /**
+   * Put member ID in session on reload
+   */
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    console.log('browser refreshed');
+
+    if (!sessionStorage.getItem('memberID')) {
+      this.util.apply$.subscribe(res => {
+        if (res) {
+          sessionStorage.setItem('memberID', res);
+        }
+      });
+    }
+  }
+
 
   ngOnInit() {
     this.getAllEvents();
     this.checkIfRouterIsFromUser();
-    console.log(JSON.parse(localStorage.getItem('addedEvents')));
+    // console.log(JSON.parse(localStorage.getItem('addedEvents')));
   }
 
-  ngOnDestroy(): void { }
+  ngOnDestroy() {
+    sessionStorage.removeItem('memberID');
+    this.util.apply$.next();
+    this.util.apply$.complete();
+  }
 
   /**
    * Get all events
@@ -50,10 +75,13 @@ export class EventsComponent implements OnInit, OnDestroy {
       if (res) {
         this.memberId = res;
         this.hasApply = true;
+      } else if (sessionStorage.getItem('memberID')) {
+        this.memberId = sessionStorage.getItem('memberID');
+        this.hasApply = true;
       } else {
         this.hasApply = false;
       }
-    });
+      });
   }
 
   /**
@@ -76,13 +104,26 @@ export class EventsComponent implements OnInit, OnDestroy {
   /**
    * This adds a member to an event
    */
-  joinEvent(id) {
-    console.log(id);
-    const joinedEvents = JSON.parse(localStorage.getItem('addedEvents'));
-    joinedEvents.push({ member_id: this.memberId, event_id: id });
-    const addData = joinedEvents;
-    localStorage.setItem('addedEvents', JSON.stringify(addData));
-    console.log(localStorage.getItem('addedEvents'));
+  joinEvent($event, id) {
+    const payload = {
+      id: this.idsService.generate(),
+      member_id: this.memberId,
+      event_id: id
+    };
+    this.eventService.addEvents(payload)
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(res => {
+        console.log(res);
+      });
+  }
+
+  setEventCalStatus(id) {
+    console.log(this.calStatForm.value);
+    this.eventService.updateEventCalStatus(id, this.calStatForm.value)
+    .pipe(untilComponentDestroyed(this))
+    .subscribe(res => {
+      console.log(res);
+    });
   }
 
 }

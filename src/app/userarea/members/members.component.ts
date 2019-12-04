@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class MembersComponent implements OnInit, AfterViewInit, OnDestroy {
   allMembers: Member[];
   allEvents: _Events[];
+  myEvents: _Events[];
   order = 'name';
   reverse = false;
   @ViewChild('calModal', { static: false }) calModal;
@@ -32,6 +33,7 @@ export class MembersComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.getAllMembers();
     this.getAllEvent();
+    this.getAllAddedEvents();
   }
 
   ngAfterViewInit() {
@@ -68,28 +70,42 @@ export class MembersComponent implements OnInit, AfterViewInit, OnDestroy {
     this.calendarModal.hide();
   }
 
+  getAllAddedEvents() {
+    this.eventService.storeRequestRegisteredEvents()
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(res => {
+        this.myEvents = res;
+      });
+  }
+
   /**
    * Get total number of events registered
    */
   getTotalRegEvent(id) {
-    const joinedEvents: any = JSON.parse(localStorage.getItem('addedEvents'));
-    const regEvents = joinedEvents.filter(regEv => {
-      return regEv.member_id === id;
-    });
-    const availableEventsIds = new Set(regEvents.map(ev => ev.event_id));
-    const filteredEvents = this.allEvents.filter(({ _id }) => availableEventsIds.has(_id));
-    return filteredEvents.length;
+    if (this.myEvents) {
+      const regEvents = this.myEvents.filter((regEv: any) => {
+        return regEv.member_id === id;
+      });
+      const availableEventsIds = new Set(regEvents.map((ev: any) => ev.event_id));
+      // tslint:disable-next-line: no-shadowed-variable
+      const filteredEvents = this.allEvents.filter(({ id }) => availableEventsIds.has(id));
+      return filteredEvents.length;
+    }
   }
 
   getRegisteredEvent(id) {
-    const joinedEvents: any = JSON.parse(localStorage.getItem('addedEvents'));
-    const regEvents = joinedEvents.filter(regEv => {
-      return regEv.member_id === id;
-    });
-    const availableEventsIds = new Set(regEvents.map(ev => ev.event_id));
-    const filteredEvents = this.allEvents.filter(({ _id }) => availableEventsIds.has(_id));
-    this.util.myEvent$.next(filteredEvents);
-    // console.log(filteredEvents);
+    this.eventService.storeRequestRegisteredEvents()
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(res => {
+        const regEvents = res.filter(regEv => {
+          return regEv.member_id === id;
+        });
+        const availableEventsIds = new Set(regEvents.map(ev => ev.event_id));
+        // tslint:disable-next-line: no-shadowed-variable
+        const filteredEvents = this.allEvents.filter(({ id }) => availableEventsIds.has(id));
+        this.util.myEvent$.next(filteredEvents);
+        // console.log(filteredEvents);
+      });
   }
 
   getAllEvent() {

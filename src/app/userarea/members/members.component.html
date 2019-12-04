@@ -41,12 +41,12 @@
                         <td>{{ member.phone }}</td>
                         <td>{{ member.email }}</td>
                         <td>{{ member.company }}</td>
-                        <td>{{ getTotalRegEvent(member._id) }}</td>
+                        <td>{{ getTotalRegEvent(member.id) }}</td>
                         <td>
-                            <i class="material-icons text-success c-pointer mr-1" mdbTooltip="Register for an event" placement="top" (click)="memberViewEvents(member._id)">
+                            <i class="material-icons text-success c-pointer mr-1" mdbTooltip="Register for an event" placement="top" (click)="memberViewEvents(member.id)">
                                 post_add
                             </i>
-                            <i class="material-icons text-info c-pointer mr-1" mdbTooltip="Track your events in calendar" placement="top" (click)="openCalModal(member._id)">
+                            <i class="material-icons text-info c-pointer mr-1" mdbTooltip="Track your events in calendar" placement="top" (click)="openCalModal(member.id)">
                                 calendar_view_day
                             </i>
                             <i class="material-icons text-danger c-pointer" mdbTooltip="Delete a user" placement="top" (click)="removeMember(member)">
