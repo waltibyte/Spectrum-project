@@ -4,10 +4,11 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { CalendarEventComponent } from './component/calendar-event/calendar-event.component';
 import { CalendarModule } from 'angular-calendar';
+import { TotalMemberEventPipe } from './pipe/total-member-event.pipe';
 
 
 @NgModule({
-  declarations: [PagenotfoundComponent, CalendarEventComponent],
+  declarations: [PagenotfoundComponent, CalendarEventComponent, TotalMemberEventPipe],
   imports: [
     CommonModule,
     MDBBootstrapModule,
@@ -15,7 +16,8 @@ import { CalendarModule } from 'angular-calendar';
   ],
   exports: [
     PagenotfoundComponent,
-    CalendarEventComponent
+    CalendarEventComponent,
+    TotalMemberEventPipe
   ]
 })
 export class SharedModule { }

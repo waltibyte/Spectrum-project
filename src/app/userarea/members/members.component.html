@@ -42,7 +42,7 @@
                         <td>{{ member.phone }}</td>
                         <td>{{ member.email }}</td>
                         <td>{{ member.company }}</td>
-                        <td>{{ getTotalRegEvent(member.id) }}</td>
+                        <td [innerHTML]="allEvents | totalMemberEvent : myEvents : member.id"></td>
                         <td>
                             <i class="material-icons text-success c-pointer mr-1" mdbTooltip="Register for an event" placement="top" (click)="memberViewEvents(member.id)">
                                 post_add

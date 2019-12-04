@@ -46,11 +46,9 @@ export class EventsComponent implements OnInit, OnDestroy {
     }
   }
 
-
   ngOnInit() {
-    this.getAllEvents();
+    this.getAllAddedEvents();
     this.checkIfRouterIsFromUser();
-    // console.log(JSON.parse(localStorage.getItem('addedEvents')));
   }
 
   ngOnDestroy() {
@@ -70,6 +68,29 @@ export class EventsComponent implements OnInit, OnDestroy {
         console.log(res);
       });
   }
+
+  getAllAddedEvents() {
+    this.eventService.storeRequestRegisteredEvents()
+      .pipe(untilComponentDestroyed(this))
+      .subscribe(res => {
+        this.myEvents = res;
+      });
+  }
+
+  getEventNotRegistered() {
+    this.loading = true;
+    this.eventService.storeRequestRegisteredEvents()
+    .pipe(untilComponentDestroyed(this))
+    .subscribe(res => {
+      const regEvents = res.filter(val => val.member_id === this.memberId);
+      const availableEventsIds = new Set(regEvents.map(ev => ev.event_id));
+      this.eventService.storeRequestEvents()
+      .pipe(untilComponentDestroyed(this)).subscribe(resData => {
+        this.loading = false;
+        this.allEvents = resData.filter(({ id }) => !availableEventsIds.has(id));
+      });
+    });
+  }
   /**
    * This subscribes to the uni-cast
    * observable to check if the page was routed from the member's table and then subscribes to it
@@ -81,11 +102,14 @@ export class EventsComponent implements OnInit, OnDestroy {
         console.log(res);
         this.memberId = res;
         this.hasApply = true;
+        this.getEventNotRegistered();
       } else if (sessionStorage.getItem('memberID')) {
         this.memberId = sessionStorage.getItem('memberID');
         this.hasApply = true;
+        this.getEventNotRegistered();
       } else {
         this.hasApply = false;
+        this.getAllEvents();
       }
       });
   }
@@ -116,12 +140,6 @@ export class EventsComponent implements OnInit, OnDestroy {
       member_id: this.memberId,
       event_id: id
     };
-
-    const payload2 = [{
-      id: this.idsService.generate(),
-      member_id: this.memberId,
-      event_id: id
-    }];
     this.eventService.storeRequestRegisteredEvents()
       .pipe(untilComponentDestroyed(this))
       .subscribe(res => {
@@ -133,6 +151,7 @@ export class EventsComponent implements OnInit, OnDestroy {
             .pipe(untilComponentDestroyed(this))
             .subscribe(resData => {
               console.log(resData);
+              this.getEventNotRegistered();
               this.toastr.success('Event', 'You have joined this event');
             });
           } else {
