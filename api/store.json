@@ -1,0 +1,161 @@
+{
+  "members": [
+    {
+      "id": "5de5d18139b550a04a312a63",
+      "name": "Juliet Haynes",
+      "age": 22,
+      "phone": "+1 (812) 452-2003",
+      "email": "juliethaynes@lyrichord.com",
+      "company": "DOGSPA"
+    },
+    {
+      "id": "5de5d1814c3cfcd0170c6e14",
+      "name": "Candy Pugh",
+      "age": 31,
+      "phone": "+1 (897) 538-2281",
+      "email": "candypugh@dogspa.com",
+      "company": "ZOLARITY"
+    },
+    {
+      "id": "5de5d1812feb579903d12fa9",
+      "name": "Lynda Mann",
+      "age": 25,
+      "phone": "+1 (838) 550-2506",
+      "email": "lyndamann@zolarity.com",
+      "company": "NURALI"
+    },
+    {
+      "id": "5de5d1818c6db495c11e9742",
+      "name": "Bradley Byrd",
+      "age": 27,
+      "phone": "+1 (948) 570-3842",
+      "email": "bradleybyrd@nurali.com",
+      "company": "PLASMOX"
+    },
+    {
+      "id": "5de5d181fab48df7644eccea",
+      "name": "Beach Short",
+      "age": 37,
+      "phone": "+1 (949) 448-3442",
+      "email": "beachshort@plasmox.com",
+      "company": "XERONK"
+    },
+    {
+      "id": "5de5d18135b5e46b1110a619",
+      "name": "Bertha Knox",
+      "age": 29,
+      "phone": "+1 (852) 540-3382",
+      "email": "berthaknox@xeronk.com",
+      "company": "ARTWORLDS"
+    }
+  ],
+  "events": [
+    {
+      "id": "5de5d72b6b6c64f3dbbfc80c",
+      "organizer": "proident",
+      "company": "DATAGEN",
+      "about": "Culpa ipsum nulla in et tempor consequat cupidatat sit velit. Veniam esse fugiat Lorem non sunt nisi esse elit minim.",
+      "scheduledFor": "2020-02-28T07:40:02 -01:00",
+      "duration": 526,
+      "capacity": 65,
+      "showOnCalendar": false
+    },
+    {
+      "id": "5de5d72bda083cde34ec03ef",
+      "organizer": "occaecat",
+      "company": "IMPERIUM",
+      "about": "Id cillum eiusmod eiusmod nulla ullamco incididunt magna nostrud consectetur aliqua commodo.",
+      "scheduledFor": "2020-02-01T04:37:46 -01:00",
+      "duration": 923,
+      "capacity": 76,
+      "showOnCalendar": true
+    },
+    {
+      "id": "5de5d72b6aacbed1e7b6618e",
+      "organizer": "labore",
+      "company": "NIXELT",
+      "about": "Dolore labore sunt laboris deserunt.",
+      "scheduledFor": "2020-05-25T05:39:01 -01:00",
+      "duration": 568,
+      "capacity": 74,
+      "showOnCalendar": false
+    },
+    {
+      "id": "5de5d72b2399f5b5858616a9",
+      "organizer": "cillum",
+      "company": "ZOLAREX",
+      "about": "Pariatur ut elit id nulla reprehenderit fugiat adipisicing in cupidatat eu nostrud aliqua dolore.",
+      "scheduledFor": "2020-05-24T11:15:19 -01:00",
+      "duration": 597,
+      "capacity": 57,
+      "showOnCalendar": true
+    },
+    {
+      "id": "5de5d72b87fb557361269fc9",
+      "organizer": "aliquip",
+      "company": "ZANILLA",
+      "about": "Nisi consectetur consequat eu magna eu veniam. Dolor laborum ex aliqua anim ullamco.",
+      "scheduledFor": "2020-11-13T11:43:09 -01:00",
+      "duration": 502,
+      "capacity": 69,
+      "showOnCalendar": true
+    },
+    {
+      "id": "5de5d72b36b0db643b55ed51",
+      "organizer": "laboris",
+      "company": "BILLMED",
+      "about": "Ad exercitation qui tempor voluptate laborum et officia qui non ut id voluptate duis.",
+      "scheduledFor": "2019-12-20T07:15:35 -01:00",
+      "duration": 913,
+      "capacity": 66,
+      "showOnCalendar": true
+    },
+    {
+      "id": "5de5d72b0f0686dfa1ed1b97",
+      "organizer": "non",
+      "company": "XIXAN",
+      "about": "Laborum qui esse proident nostrud quis quis ex aute occaecat commodo nostrud velit tempor duis.",
+      "scheduledFor": "2020-12-22T11:31:49 -01:00",
+      "duration": 489,
+      "capacity": 60,
+      "showOnCalendar": true
+    }
+  ],
+  "registeredEvents": [
+    {
+      "id": "fgwergertrt3453",
+      "member_id": "5de5d18139b550a04a312a63",
+      "event_id": "5de5d72b87fb557361269fc9"
+    },
+    {
+      "id": "egetye5363tetg",
+      "member_id": "5de5d18139b550a04a312a63",
+      "event_id": "5de5d72b36b0db643b55ed51"
+    },
+    {
+      "id": "etgrgdf54645tre",
+      "member_id": "5de5d18139b550a04a312a63",
+      "event_id": "5de5d72b0f0686dfa1ed1b97"
+    },
+    {
+      "id": "34rwretwertgfed",
+      "member_id": "5de5d181fab48df7644eccea",
+      "event_id": "5de5d72b6b6c64f3dbbfc80c"
+    },
+    {
+      "id": "05556b5d-9f05-0d50-fb41-c0e83204e733",
+      "member_id": "5de5d181fab48df7644eccea",
+      "event_id": "5de5d72bda083cde34ec03ef"
+    },
+    {
+      "id": "01e13efe-ae8f-f506-5942-b5b7a4cefa0f",
+      "member_id": "5de5d1814c3cfcd0170c6e14",
+      "event_id": "5de5d72b87fb557361269fc9"
+    },
+    {
+      "id": "b19da6b0-be06-2f8f-7f0d-dd5b68af68b8",
+      "member_id": "5de5d18139b550a04a312a63",
+      "event_id": "5de5d72bda083cde34ec03ef"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo spec-nav-color">
+
+        <!-- Navbar brand -->
+        <mdb-navbar-brand><a class="navbar-brand top-nav-color" (click)="router.navigateByUrl(['portal/home'])">Spectrum</a></mdb-navbar-brand>
+    
+        <!-- Collapsible content -->
+        <links>
+    
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" (click)="router.navigateByUrl(['portal/home'])">
+                    <a class="nav-link waves-light" mdbWavesEffect>Home</a>
+                </li>
+                <li class="nav-item" [routerLink]="['members']" routerLinkActive="active">
+                    <a class="nav-link waves-light" mdbWavesEffect>Members</a>
+                </li>
+                <li class="nav-item" [routerLink]="['events']" routerLinkActive="active">
+                    <a class="nav-link waves-light" mdbWavesEffect>Events</a>
+                </li>
+    
+            </ul>
+            <!-- Links -->
+    
+        </links>
+        <!-- Collapsible content -->
+    
+    </mdb-navbar>
+    <!--/.Navbar-->

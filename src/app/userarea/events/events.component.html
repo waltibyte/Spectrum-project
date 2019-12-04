@@ -1,0 +1,54 @@
+<ngx-loading [show]="loading"></ngx-loading>
+<div class="row" *ngIf="!loading">
+    <div class="col-12">
+        <div class="card p-4 ox-auto" style="border-top: 6px solid #e84a2c;">
+            <h4>View all events</h4>
+            <table class="table spectrum-table">
+                <thead>
+                    <tr>
+                        <th>Organizer</th>
+                        <th>Company</th>
+                        <th>About</th>
+                        <th>Schedule for</th>
+                        <th>Duration</th>
+                        <th>Capacity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let event of allEvents">
+                        <td>{{ event.organizer }}</td>
+                        <td>{{ event.company }}</td>
+                        <td>{{ event.about }}</td>
+                        <td>{{ formatDate(event.scheduledFor) }}</td>
+                        <td>{{ timeConvert(event.duration) }}</td>
+                        <td>{{ event.hideCap ? 'hidden' : event.capacity }}</td>
+                        <td>
+                            <div class="d-flex flex-row justify-content-center align-items-center">
+                                <button *ngIf="hasApply" type="button" (click)="joinEvent(event.id)"
+                                    mdbTooltip="Add event" placement="top"
+                                    class="btn btn-primary shadow-sm mx-1 btn-round d-flex flex-row justify-content-center align-items-center">
+                                    <span class="text-left">Join</span>
+                                    <i class="material-icons text-right">
+                                        touch_app
+                                    </i>
+                                </button>
+                                <i (click)="event.hideCap ? event.hideCap = false : event.hideCap = true"
+                                    class="material-icons c-pointer" [class.text-info]="event.hideCap"
+                                    mdbTooltip="Show or hide capacity" placement="top">
+                                    remove_red_eye
+                                </i>
+
+                                <!-- Default switch -->
+                                <div class="custom-control custom-switch ml-2" mdbTooltip="Show or hide event on calendar marker" placement="top">
+                                    <input type="checkbox" [formControl]="calStatForm" [checked]="event.showOnCalendar" (change)="setEventCalStatus(event.id)" class="custom-control-input" id="customSwitches{{event.id}}">
+                                    <label class="custom-control-label" for="customSwitches{{event.id}}"></label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
