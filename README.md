@@ -23,7 +23,7 @@ Enjoy!
 
 Screenshots
 
-https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/homepage.PNG
+![GitHub Logo](https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/homepage.PNG)
 https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/adduser.PNG
 https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/calendarmarker.PNG
 https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/calendarmarkerdes.PNG
