@@ -11,6 +11,8 @@ import { OrderModule } from 'ngx-order-pipe';
 import { SharedModule } from '../shared/shared.module';
 import { CalendarModule } from 'angular-calendar';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
   declarations: [UserAreaComponent, TopMenuComponent, MembersComponent, EventsComponent ],
@@ -21,7 +23,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CalendarModule,
     MDBBootstrapModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule,
+    NgxLoadingModule,
   ],
   exports: [UserAreaComponent, TopMenuComponent, MembersComponent, EventsComponent],
   providers: [ DatePipe ]

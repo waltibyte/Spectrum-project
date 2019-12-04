@@ -151,6 +151,11 @@
       "id": "29e19544-c76c-50d3-57ac-54f65a9a6478",
       "member_id": "5de5d1818c6db495c11e9742",
       "event_id": "5de5d72b6aacbed1e7b6618e"
+    },
+    {
+      "id": "01e13efe-ae8f-f506-5942-b5b7a4cefa0f",
+      "member_id": "5de5d1814c3cfcd0170c6e14",
+      "event_id": "5de5d72b87fb557361269fc9"
     }
   ]
 }

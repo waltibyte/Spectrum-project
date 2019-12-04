@@ -7,6 +7,7 @@ import { UtilityService } from 'src/app/shared/services/utility.service';
 import { untilComponentDestroyed } from '@w11k/ngx-componentdestroyed';
 import { IdService } from 'src/app/shared/services/id.service';
 import { FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-events',
@@ -18,12 +19,14 @@ export class EventsComponent implements OnInit, OnDestroy {
   memberId: string;
   hasApply = false;
   calStatForm = new FormControl();
+  loading = false;
 
   constructor(
     private eventService: EventsService,
     private fDate: DatePipe,
     private util: UtilityService,
-    private idsService: IdService
+    private idsService: IdService,
+    private toastr: ToastrService
   ) { }
 
   /**
@@ -59,8 +62,10 @@ export class EventsComponent implements OnInit, OnDestroy {
    * Get all events
    */
   getAllEvents() {
+    this.loading = true;
     this.eventService.storeRequestEvents()
       .pipe(untilComponentDestroyed(this)).subscribe(res => {
+        this.loading = false;
         this.allEvents = res;
         console.log(res);
       });
@@ -104,7 +109,7 @@ export class EventsComponent implements OnInit, OnDestroy {
   /**
    * This adds a member to an event
    */
-  joinEvent($event, id) {
+  joinEvent(id) {
     const payload = {
       id: this.idsService.generate(),
       member_id: this.memberId,
@@ -114,6 +119,7 @@ export class EventsComponent implements OnInit, OnDestroy {
       .pipe(untilComponentDestroyed(this))
       .subscribe(res => {
         console.log(res);
+        this.toastr.success('Event', 'You have joined this event');
       });
   }
 
@@ -122,7 +128,9 @@ export class EventsComponent implements OnInit, OnDestroy {
     this.eventService.updateEventCalStatus(id, this.calStatForm.value)
     .pipe(untilComponentDestroyed(this))
     .subscribe(res => {
-      console.log(res);
+      if (res) {
+        this.toastr.success('Event', 'Updated Successfully');
+      }
     });
   }
 

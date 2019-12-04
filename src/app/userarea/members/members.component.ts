@@ -7,6 +7,7 @@ import { EventsService } from 'src/app/shared/services/events.service';
 import { _Events } from 'src/app/shared/model/events-interface';
 import { UtilityService } from 'src/app/shared/services/utility.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-members',
@@ -19,6 +20,7 @@ export class MembersComponent implements OnInit, AfterViewInit, OnDestroy {
   myEvents: _Events[];
   order = 'name';
   reverse = false;
+  loading = false;
   @ViewChild('calModal', { static: false }) calModal;
   @ViewChild('calendarModal', { static: false }) calendarModal;
 
@@ -27,7 +29,7 @@ export class MembersComponent implements OnInit, AfterViewInit, OnDestroy {
     private eventService: EventsService,
     private util: UtilityService,
     private router: Router,
-    private orderPipe: OrderPipe
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -43,9 +45,11 @@ export class MembersComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void { }
 
   getAllMembers() {
+    this.loading = true;
     this.memberService.storeMembers
       .pipe(untilComponentDestroyed(this))
       .subscribe(res => {
+        this.loading = false;
         this.allMembers = res;
       });
   }
@@ -58,7 +62,11 @@ export class MembersComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   removeMember(member: any) {
-    this.allMembers.splice(this.allMembers.indexOf(member), 1);
+    const index = this.allMembers.indexOf(member);
+    if (index) {
+      this.allMembers.splice(index, 1);
+      this.toastr.success('Member', 'Deleted successfully!');
+    }
   }
 
   openCalModal(id) {
