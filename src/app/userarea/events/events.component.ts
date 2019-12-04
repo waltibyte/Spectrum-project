@@ -20,6 +20,7 @@ export class EventsComponent implements OnInit, OnDestroy {
   hasApply = false;
   calStatForm = new FormControl();
   loading = false;
+  myEvents: any[];
 
   constructor(
     private eventService: EventsService,
@@ -55,7 +56,6 @@ export class EventsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     sessionStorage.removeItem('memberID');
     this.util.apply$.next();
-    this.util.apply$.complete();
   }
 
   /**
@@ -76,8 +76,9 @@ export class EventsComponent implements OnInit, OnDestroy {
    * in other to get member id
    */
   checkIfRouterIsFromUser() {
-    this.util.apply$.subscribe(res => {
+  this.util.apply$.subscribe(res => {
       if (res) {
+        console.log(res);
         this.memberId = res;
         this.hasApply = true;
       } else if (sessionStorage.getItem('memberID')) {
@@ -115,11 +116,28 @@ export class EventsComponent implements OnInit, OnDestroy {
       member_id: this.memberId,
       event_id: id
     };
-    this.eventService.addEvents(payload)
+
+    const payload2 = [{
+      id: this.idsService.generate(),
+      member_id: this.memberId,
+      event_id: id
+    }];
+    this.eventService.storeRequestRegisteredEvents()
       .pipe(untilComponentDestroyed(this))
       .subscribe(res => {
-        console.log(res);
-        this.toastr.success('Event', 'You have joined this event');
+        const myEvent = res.filter(val => val.member_id === this.memberId);
+        const takenEvent = myEvent.filter(val => val.event_id === id);
+        console.log(takenEvent);
+        if (takenEvent.length === 0) {
+          this.eventService.addEvents(payload)
+            .pipe(untilComponentDestroyed(this))
+            .subscribe(resData => {
+              console.log(resData);
+              this.toastr.success('Event', 'You have joined this event');
+            });
+          } else {
+            this.toastr.error('Event', 'You have already joined this event');
+          }
       });
   }
 
@@ -133,5 +151,4 @@ export class EventsComponent implements OnInit, OnDestroy {
       }
     });
   }
-
 }

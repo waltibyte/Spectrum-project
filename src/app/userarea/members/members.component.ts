@@ -120,7 +120,7 @@ export class MembersComponent implements OnInit, AfterViewInit, OnDestroy {
     this.eventService.storeRequestEvents()
       .pipe(untilComponentDestroyed(this))
       .subscribe(res => {
-        this.allEvents = res;
+        this.allEvents = res.filter((resData) => resData.showOnCalendar === true);
       });
   }
 
