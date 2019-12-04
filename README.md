@@ -22,3 +22,10 @@ Also run `npm run api` to start the json server to enable you handle http reques
 Enjoy!
 
 Screenshots
+
+https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/homepage.PNG
+https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/adduser.PNG
+https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/calendarmarker.PNG
+https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/calendarmarkerdes.PNG
+https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/events.PNG
+https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/memberstable.PNG
