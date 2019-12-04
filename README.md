@@ -24,8 +24,8 @@ Enjoy!
 Screenshots
 
 ![GitHub Logo](https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/homepage.PNG)
-https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/adduser.PNG
-https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/calendarmarker.PNG
-https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/calendarmarkerdes.PNG
-https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/events.PNG
-https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/memberstable.PNG
+![GitHub Logo](https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/adduser.PNG)
+![GitHub Logo](https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/calendarmarker.PNG)
+![GitHub Logo](https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/calendarmarkerdes.PNG)
+![GitHub Logo](https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/events.PNG)
+![GitHub Logo](https://github.com/waltibyte/Spectrum-project/blob/chukwudi/screenshots/memberstable.PNG)
